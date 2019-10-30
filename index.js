@@ -33,7 +33,8 @@ XMLHttpRequest = (function () {
     this._headers = null;
   }
   XMLHttpRequest.prototype.abort = function () {
-    RequestTask.abort();
+    this._requestTask.abort();
+    this._requestTask.offHeadersReceived();
     if(typeof this.onabort === 'function'){
       this.onabort();
     }
@@ -58,7 +59,7 @@ XMLHttpRequest = (function () {
     return _info;
   };
   XMLHttpRequest.prototype.overrideMimeType = function (MIMEtype) {
-    this.requestHeader['content-type'] = MIMEtype;
+    this.requestHeader['Content-Type'] = MIMEtype;
   };
   XMLHttpRequest.prototype.open = function (method, url, async, user, password) {
     this.readyState = 1;
@@ -125,7 +126,11 @@ XMLHttpRequest = (function () {
     }
   };
   XMLHttpRequest.prototype.setRequestHeader = function (header, value) {
+    if(this.requestHeader[header]){
+      this.requestHeader[header] += ',' + value;
+    }else{
       this.requestHeader[header] = value;
+    }
   };
   
   //内部
