@@ -1,0 +1,15 @@
+/*.iml
+/.idea
+/config.json
+/node_modules
+*.log
+/build
+/.vscode
+/.history
+.DS_Store
+
+/src/javascripts/manage/zylive.config.js
+/src/roomsdk
+/src/js2client
+.DS_Store
+.project
