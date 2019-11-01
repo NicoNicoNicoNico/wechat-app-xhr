@@ -1,8 +1,13 @@
-const simulate = require('miniprogram-simulate')
+// const simulate = require('miniprogram-simulate')
 
-var XMLHttpRequest = require('../xhr.js');
+var XMLHttpRequest = require('../index.js');
 var assert = require('chai').assert;
 // const {describe, it} = require('mocha');
+
+const requestApi = require('./request.js');
+global.wx = {
+  ...requestApi
+} 
 
 describe('xhr的测试', function() {
   it('abort', function(){
