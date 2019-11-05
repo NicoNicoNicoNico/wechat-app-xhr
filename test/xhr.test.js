@@ -6,7 +6,7 @@ var assert = require('chai').assert;
 
 const requestApi = require('./request.js');
 global.wx = {
-  ...requestApi
+  request: requestApi.request
 } 
 
 describe('xhr的测试', function() {
