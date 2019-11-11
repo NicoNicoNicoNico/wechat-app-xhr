@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha",
-    "coverage": "nyc report --reporter=text-lcov | coveralls"
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,7 @@
   "homepage": "https://github.com/NicoNicoNicoNico/wechat-app-xhr#readme",
   "devDependencies": {
     "chai": "^4.2.0",
-    "coveralls": "^3.0.7",
+    "codecov": "^3.6.1",
     "karma-dirname-preprocessor": "0.0.4",
     "karma-filemap-preprocessor": "^0.1.0",
     "karma-webpack": "^4.0.2",

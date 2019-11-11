@@ -14,3 +14,4 @@
 /src/js2client
 .DS_Store
 .project
+/coverage.lcov
