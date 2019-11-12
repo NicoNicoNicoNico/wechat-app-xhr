@@ -1,6 +1,8 @@
 language: node_js
 script: npm test
-after_script: npm run coverage
+after_script: 
+ - export CODECOV_TOKEN="c139a37c-9fa8-4291-80dc-d89251e4c9b9"
+ - npm run coverage
 node_js:
   - '10'
   - '9'
