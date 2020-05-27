@@ -16,7 +16,7 @@ XMLHttpRequest = (function () {
     this.responseText = ''; 
     this.responseType = 'text';
     this.responseURL = null;
-    this.status = null;
+    this.status = 0;
     this.statusText = null;
     this.timeout = null;
     this.withCredentials = false;
@@ -109,19 +109,28 @@ XMLHttpRequest = (function () {
         }
       }
     });
-    this._requestTask.onHeadersReceived(function(res){
-      self.readyState = 2;
-      self._execStateChanged();
-      if(typeof self.onloadstart === 'function'){
-        self.onloadstart(res);
-      }
-    });
+    if(this._requestTask){
+      this._requestTask.onHeadersReceived(function(res){
+        self.readyState = 2;
+        self._execStateChanged();
+        if(typeof self.onloadstart === 'function'){
+          self.onloadstart(res);
+        }
+      });
+    }else{
+      console.warn('小程序返回RequestTask为', this._requestTask);
+    }
+    
     if(this.timeout){
       this._sendTimer = setTimeout(function(){
         if(typeof self.ontimeout === 'function'){
           self.ontimeout(res);
         }
-        self._requestTask.abort();
+        if(self._requestTask){
+          self._requestTask.abort();
+        }else{
+          console.warn('小程序返回RequestTask为', this._requestTask);
+        }
       }, this._sendTimer);
     }
   };
