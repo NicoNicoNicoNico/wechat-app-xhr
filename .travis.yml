@@ -1,5 +1,7 @@
 language: node_js
-script: npm test
+script: 
+  - npm test
+  - npm install codecov -g
 after_script: 
  - export CODECOV_TOKEN="c06452f9-0f94-4fb1-a509-ed368da7a45d"
  - npm run coverage
@@ -9,3 +11,5 @@ node_js:
   - '8'
   - '7'
   - '6'
+after_success:
+  - codecov
