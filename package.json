@@ -22,7 +22,7 @@
     "codecov": "^3.6.1",
     "karma-dirname-preprocessor": "0.0.4",
     "karma-filemap-preprocessor": "^0.1.0",
-    "karma-webpack": "^4.0.2",
+    "karma-webpack": "^5.0.0",
     "mocha": "^6.2.2",
     "nyc": "^14.1.1"
   }
